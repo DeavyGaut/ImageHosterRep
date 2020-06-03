@@ -4,12 +4,26 @@
 
 <!-- Adding the fragment site-head in layout.html-->
 <head th:replace="layout :: site-head">
+
+    <link rel="icon" type="image/png" th:href="{/images/icons/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 </head>
 
 <!-- Adding the fragment logged-out in layout.html-->
 <header th:replace="layout :: logged-out"></header>
 
 <body>
+<div class="limiter">
+    <div class="wrap-login100">
+        <div class="login100-pic js-tilt" data-tilt>
+            <img src="../../static/photos/134-1346462_the-flash-logo-png-flash-logo-png-transparent.png" width="1000" th:src="@{/photos/134-1346462_the-flash-logo-png-flash-logo-png-transparent.png}"/>
+
 <h1>Image Hoster</h1>
 <main id="images">
     <post th:each="i : ${images}">
@@ -20,5 +34,21 @@
         <i>Posted On: </i> <span th:text="${i.date}"></span>
     </post>
 </main>
+</div>
+    </div>
+</div>
+
+<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendor/select2/select2.min.js}"></script>
+<script th:src="@{/vendor/tilt/tilt.jquery.min.js}"></script>
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+<script th:src="@{js/main.js}"></script>
+
 </body>
 </html>

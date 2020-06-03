@@ -27,7 +27,7 @@ public class ImageController {
     @Autowired
     private TagService tagService;
 
-    //This method displays all the images in the user home page after successful login
+    //This method displays all the pictures in the user home page after successful login
     @RequestMapping("images")
     public String getUserImages(Model model) {
         List<Image> images = imageService.getAllImages();
@@ -40,11 +40,11 @@ public class ImageController {
     //First receive the dynamic parameter in the incoming request URL in a string variable 'title' and also the Model type object
     //Call the getImageByTitle() method in the business logic to fetch all the details of that image
     //Add the image in the Model type object with 'image' as the key
-    //Return 'images/image.html' file
+    //Return 'pictures/image.html' file
 
     //Also now you need to add the tags of an image in the Model type object
     //Here a list of tags is added in the Model type object
-    //this list is then sent to 'images/image.html' file and the tags are displayed
+    //this list is then sent to 'pictures/image.html' file and the tags are displayed
     @RequestMapping("/images/{title}")
     public String showImage(@PathVariable("title") String title, Model model) {
         Image image = imageService.getImageByTitle(title);
@@ -53,19 +53,19 @@ public class ImageController {
         return "images/image";
     }
 
-    //This controller method is called when the request pattern is of type 'images/upload'
-    //The method returns 'images/upload.html' file
+    //This controller method is called when the request pattern is of type 'pictures/upload'
+    //The method returns 'pictures/upload.html' file
     @RequestMapping("/images/upload")
     public String newImage() {
         return "images/upload";
     }
 
-    //This controller method is called when the request pattern is of type 'images/upload' and also the incoming request is of POST type
+    //This controller method is called when the request pattern is of type 'pictures/upload' and also the incoming request is of POST type
     //The method receives all the details of the image to be stored in the database, and now the image will be sent to the business logic to be persisted in the database
     //After you get the imageFile, set the user of the image by getting the logged in user from the Http Session
     //Convert the image to Base64 format and store it as a string in the 'imageFile' attribute
     //Set the date on which the image is posted
-    //After storing the image, this method directs to the logged in user homepage displaying all the images
+    //After storing the image, this method directs to the logged in user homepage displaying all the pictures
 
     //Get the 'tags' request parameter using @RequestParam annotation which is just a string of all the tags
     //Store all the tags in the database and make a list of all the tags using the findOrCreateTags() method
@@ -87,7 +87,7 @@ public class ImageController {
 
     //This controller method is called when the request pattern is of type 'editImage'
     //This method fetches the image with the corresponding id from the database and adds it to the model with the key as 'image'
-    //The method then returns 'images/edit.html' file wherein you fill all the updated details of the image
+    //The method then returns 'pictures/edit.html' file wherein you fill all the updated details of the image
 
     //The method first needs to convert the list of all the tags to a string containing all the tags separated by a comma and then add this string in a Model type object
     //This string is then displayed by 'edit.html' file as previous tags of an image
@@ -101,7 +101,7 @@ public class ImageController {
         return "images/edit";
     }
 
-    //This controller method is called when the request pattern is of type 'images/edit' and also the incoming request is of PUT type
+    //This controller method is called when the request pattern is of type 'pictures/edit' and also the incoming request is of PUT type
     //The method receives the imageFile, imageId, updated image, along with the Http Session
     //The method adds the new imageFile to the updated image if user updates the imageFile and adds the previous imageFile to the new updated image if user does not choose to update the imageFile
     //Set an id of the new updated image
@@ -138,7 +138,7 @@ public class ImageController {
 
     //This controller method is called when the request pattern is of type 'deleteImage' and also the incoming request is of DELETE type
     //The method calls the deleteImage() method in the business logic passing the id of the image to be deleted
-    //Looks for a controller method with request mapping of type '/images'
+    //Looks for a controller method with request mapping of type '/pictures'
     @RequestMapping(value = "/deleteImage", method = RequestMethod.DELETE)
     public String deleteImageSubmit(@RequestParam(name = "imageId") Integer imageId) {
         imageService.deleteImage(imageId);

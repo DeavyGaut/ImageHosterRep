@@ -36,8 +36,8 @@ public class ImageRepository {
     }
 
     //The method creates an instance of EntityManager
-    //Executes JPQL query to fetch all the images from the database
-    //Returns the list of all the images fetched from the database
+    //Executes JPQL query to fetch all the pictures from the database
+    //Returns the list of all the pictures fetched from the database
     public List<Image> getAllImages() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Image> query = em.createQuery("SELECT i from Image i", Image.class);

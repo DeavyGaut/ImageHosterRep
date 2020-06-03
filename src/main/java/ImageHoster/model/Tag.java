@@ -21,12 +21,12 @@ public class Tag {
     @Column
     private String name;
 
-    // Write the annotation for many to many between images and tags where they are mapped by tags field in the images table
-    //The 'tags' table is mapped to 'images' table with Many:Many mapping
-    //One image can have multiple categories/tags and there can be multiple images under one category/tag
+    // Write the annotation for many to many between pictures and tags where they are mapped by tags field in the pictures table
+    //The 'tags' table is mapped to 'pictures' table with Many:Many mapping
+    //One image can have multiple categories/tags and there can be multiple pictures under one category/tag
     //FetchType is LAZY
     //Note that no column will be generated for this attribute in the database instead a new table will be created
-    //Since the mapping is Many to Many, a new table will be generated containing the two columns both referencing to the primary key of both the tables ('images', 'tags')
+    //Since the mapping is Many to Many, a new table will be generated containing the two columns both referencing to the primary key of both the tables ('pictures', 'tags')
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
     private List<Image> images;
 

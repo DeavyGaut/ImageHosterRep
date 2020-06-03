@@ -53,7 +53,7 @@ public class UserController {
 
     //This controller method is called when the request pattern is of type 'users/login' and also the incoming request is of POST type
     //The return type of the business logic is changed to User type instead of boolean type. The login() method in the business logic checks whether the user with entered username and password exists in the database and returns the User type object if user with entered username and password exists in the database, else returns null
-    //If user with entered username and password exists in the database, add the logged in user in the Http Session and direct to user homepage displaying all the images in the application
+    //If user with entered username and password exists in the database, add the logged in user in the Http Session and direct to user homepage displaying all the pictures in the application
     //If user with entered username and password does not exist in the database, redirect to the same login page
     @RequestMapping(value = "users/login", method = RequestMethod.POST)
     public String loginUser(User user, HttpSession session) {
@@ -69,8 +69,8 @@ public class UserController {
     //This controller method is called when the request pattern is of type 'users/logout' and also the incoming request is of POST type
     //The method receives the Http Session and the Model type object
     //session is invalidated
-    //All the images are fetched from the database and added to the model with 'images' as the key
-    //'index.html' file is returned showing the landing page of the application and displaying all the images in the application
+    //All the pictures are fetched from the database and added to the model with 'pictures' as the key
+    //'index.html' file is returned showing the landing page of the application and displaying all the pictures in the application
     @RequestMapping(value = "users/logout", method = RequestMethod.POST)
     public String logout(Model model, HttpSession session) {
         session.invalidate();

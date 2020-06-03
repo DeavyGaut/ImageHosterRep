@@ -9,8 +9,8 @@ import java.util.List;
 //@Entity annotation specifies that the corresponding class is a JPA entity
 @Entity
 //@Table annotation provides more options to customize the mapping.
-//Here the name of the table to be created in the database is explicitly mentioned as 'images'. Hence the table named 'images' will be created in the database with all the columns mapped to all the attributes in 'Image' class
-@Table(name = "images")
+//Here the name of the table to be created in the database is explicitly mentioned as 'pictures'. Hence the table named 'pictures' will be created in the database with all the columns mapped to all the attributes in 'Image' class
+@Table(name = "pictures")
 public class Image {
 
     //@Id annotation specifies that the corresponding attribute is a primary key
@@ -37,17 +37,17 @@ public class Image {
     @Column(name = "date")
     private Date date;
 
-    //The 'images' table is mapped to 'users' table with Many:One mapping
-    //One image can have only one user (owner) but one user can have multiple images
+    //The 'pictures' table is mapped to 'users' table with Many:One mapping
+    //One image can have only one user (owner) but one user can have multiple pictures
     //FetchType is EAGER
     @ManyToOne(fetch = FetchType.EAGER)
-    //Below annotation indicates that the name of the column in 'images' table referring the primary key in 'users' table will be 'user_id'
+    //Below annotation indicates that the name of the column in 'pictures' table referring the primary key in 'users' table will be 'user_id'
     @JoinColumn(name = "user_id")
     private User user;
 
     //The attribute contains a list of all the tags of an image
     //Note that no column will be generated for this attribute in the database instead a new table will be created
-    //Since the mapping is Many to Many, a new table will be generated containing the two columns both referencing to the primary key of both the tables ('images', 'tags')
+    //Since the mapping is Many to Many, a new table will be generated containing the two columns both referencing to the primary key of both the tables ('pictures', 'tags')
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Tag> tags = new ArrayList<>();
 

@@ -14,7 +14,7 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
-    //Call the getAllImages() method in the Repository and obtain a List of all the images in the database
+    //Call the getAllImages() method in the Repository and obtain a List of all the pictures in the database
     public List<Image> getAllImages() {
         return imageRepository.getAllImages();
     }

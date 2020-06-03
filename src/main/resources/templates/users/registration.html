@@ -4,32 +4,105 @@
 
 <!-- Adding the fragment site-head in layout.html-->
 <head th:replace="layout :: site-head">
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 </head>
 
 <!-- Adding the fragment logged-out in layout.html-->
 <header th:replace="layout :: logged-out"></header>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="../../static/photos/SolidCopy.png" width="1000" th:src="@{/photos/SolidCopy.png}"/>
+            </div>
 
-<h2>Please Register:</h2>
+            <!-- Get the details of the user to be registered and call the controller method mapped with request pattern '/users/registration' and accepting the request of type POST-->
+            <form class="login100-form validate-form" th:action="@{/users/registration}" th:method="POST"
+                  th:object="${User}">
+    <span class="login100-form-title">
+        <h2>Register</h2>
+					</span>
 
-<!-- Get the details of the user to be registered and call the controller method mapped with request pattern '/users/registration' and accepting the request of type POST-->
-<form th:action="@{/users/registration}" th:method="POST" th:object="${User}">
 
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" th:field="${User.username}"/>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <input class="input100" placeholder="UserName" type="text" id="username" name="username"
+                           th:field="${User.username}"/>
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+                </div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" th:field="${User.password}"/>
 
-    <label for="fullname">Full Name:</label>
-    <input type="text" id="fullname" name="fullName" th:field="${User.profile.fullName}"/>
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <input class="input100" type="password" placeholder="Password" id="password" name="password"
+                           th:field="${User.password}"/>
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
 
-    <label for="fullname">Email Address:</label>
-    <input type="text" id="emailaddress" name="emailAddress" th:field="${User.profile.emailAddress}"/>
 
-    <label for="fullname">Mobile Number:</label>
-    <input type="text" id="mobilenumber" name="mobileNumber" th:field="${User.profile.mobileNumber}"/>
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <input class="input100" placeholder="Full Name" type="text" id="fullname" name="fullName"
+                           th:field="${User.profile.fullName}"/>
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
 
-    <input type="submit" value="Register"/>
-</form>
 
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <input class="input100" placeholder="email address" type="text" id="emailaddress"
+                           name="emailAddress" th:field="${User.profile.emailAddress}"/>
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
+
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <input class="input100" placeholder="Mobile NUmber" type="text" id="mobilenumber"
+                           name="mobileNumber" th:field="${User.profile.mobileNumber}"/>
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit" value="Register">
+                        Register
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendor/select2/select2.min.js}"></script>
+<script th:src="@{/vendor/tilt/tilt.jquery.min.js}"></script>
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+<script th:src="@{js/main.js}"></script>
+
+</body>
 </html>
